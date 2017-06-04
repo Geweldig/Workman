@@ -7,5 +7,6 @@ If you have oh-my-zsh you can use the auto-complete plugin. This plugin is autom
 - `workspace -a/--add NAME`: Adds the current directory as a workspace with the name NAME.
 - `workspace -d/--delete NAME`: Removes the workspace with the name NAME.
 - `workspace -l/--list`: List all workspaces.
+- `workspace -h/--help`: Display the help.
 - `workspace NAME`: Go to workspace NAME.
 
