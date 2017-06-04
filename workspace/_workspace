@@ -2,21 +2,34 @@
 # Autocomplete plugin for ZSH for use with workspace manager
 
 function _workspace() {
-	_arguments
-	local expl
+	local state
+	_arguments \
+		- set1 \
+			':workspace:->listspaces' \
+		- set2 \
+			'--delete[delete workspace]:workspace:->listspaces' \
+		- set3 \
+			'--add[add workspace]' \
+		- set4 \
+			'--list[list workspaces]' \
+		- set5 \
+			'--help[show help]'
+		
+	case "$state" in
+		listspaces)
+			local -a workspaces
+			workspaces=(${(f)"$(ls -A ~/.workspaces)"})
+			declare -a workspacefin
+			for space in $workspaces
+			do
+				if [[ $space =~ ^\\. ]]; then 
+					workspacefin+=${space#"."}
+				fi
+			done
 
-	workspaces=(${(f)"$(ls -A ~/.workspaces)"})
-
-	declare -a workspacefin
-	for space in $workspaces
-	do
-		if [[ $space =~ ^\\. ]]; then 
-			workspacefin+=${space#"."}
-		fi
-	done
-
-	_wanted 'workspace' expl 'workspaces' compadd $workspacefin[@]
-	return 0
+			_wanted 'workspace' expl 'workspaces' compadd $workspacefin[@]
+			;;
+	esac
 }
 
 _workspace
