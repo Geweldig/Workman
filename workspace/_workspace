@@ -1,0 +1,22 @@
+#compdef workspace
+# Autocomplete plugin for ZSH for use with workspace manager
+
+function _workspace() {
+	_arguments
+	local expl
+
+	workspaces=(${(f)"$(ls -A ~/.workspaces)"})
+
+	declare -a workspacefin
+	for space in $workspaces
+	do
+		if [[ $space =~ ^\\. ]]; then 
+			workspacefin+=${space#"."}
+		fi
+	done
+
+	_wanted 'workspace' expl 'workspaces' compadd $workspacefin[@]
+	return 0
+}
+
+_workspace
