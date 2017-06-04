@@ -18,6 +18,7 @@ function _workspace() {
 	case "$state" in
 		listspaces)
 			local -a workspaces
+			local expl
 			workspaces=(${(f)"$(ls -A ~/.workspaces)"})
 			declare -a workspacefin
 			for space in $workspaces
