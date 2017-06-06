@@ -94,6 +94,9 @@ function workspace() {
 		cd $(head -n 1 $DIR/.$1)
 		cp $DIR/.$1 $DIR/.last_used 2> /dev/null
 		return 0
+	elif [ ! -z "$1" ] && [ ! -f $DIR/.$1 ]; then
+		echo "workspace not found: $1"
+		return 1
 	elif [ -f $DIR/.last_used ]; then
 		cd $(head -n 1 $DIR/.last_used)
 		return 0
