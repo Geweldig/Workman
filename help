@@ -1,0 +1,21 @@
+Workspace - A simple workspace manager for your terminal emulator.
+
+ADDING
+workspace --add [name]      add a workspace with name [name]
+workspace -a [name]
+
+DELETING
+workspace --delete [name]   delete the workspace with name [name]
+workspace -d [name]
+
+LISTING
+workspace --list            list all workspaces
+workspace -l
+
+HELP
+workspace --help            display help
+workspace -h
+
+SWITCHING
+workspace [name]            go to workspace [name]
+workspace                   go to last used workspace 

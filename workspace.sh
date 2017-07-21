@@ -30,27 +30,11 @@ function workspace() {
 	}
 
 	__workspaceman_help() {
-		echo "Workspace - A simple workspace manager for your terminal emulator."
-		echo ""
-		echo "ADDING"
-		echo "workspace --add [name]      add a workspace with name [name]"
-		echo "workspace -a [name]"
-		echo ""
-		echo "DELETING"
-		echo "workspace --delete [name]   delete the workspace with name [name]"
-		echo "workspace -d [name]"
-		echo ""
-		echo "LISTING"
-		echo "workspace --list            list all workspaces"
-		echo "workspace -l"
-		echo ""
-		echo "HELP"
-		echo "workspace --help            display help"
-		echo "workspace -h"
-		echo ""
-		echo "SWITCHING"
-		echo "workspace [name]            go to workspace [name]"
-		echo "workspace                   go to last used workspace"
+		cat "$DIR/help"
+	}
+
+	__workspaceman_version() {
+		cat "$DIR/version"
 	}
 	
 	# Handle flags, getops breaks for functions
@@ -75,6 +59,11 @@ function workspace() {
 		# Handle -h/--help flag
 		elif [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
 			__workspaceman_help
+			return 0
+
+		# Handle -v/--version flag
+		elif [ "$1" = "-v" ] || [ "$1" = "--version" ]; then
+			__workspaceman_version
 			return 0
 
 		# Handle -d/--delete flag
