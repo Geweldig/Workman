@@ -16,6 +16,10 @@ HELP
 workspace --help            display help
 workspace -h
 
+VERSION
+workspace --version         display version
+workspace -v
+
 SWITCHING
 workspace [name]            go to workspace [name]
 workspace                   go to last used workspace 
