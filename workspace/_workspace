@@ -13,7 +13,9 @@ function _workspace() {
 		- set4 \
 			'--list[list workspaces]' \
 		- set5 \
-			'--help[show help]' 
+			'--help[show help]' \
+		- set6 \
+			'--version[show version]'
 		
 	case "$state" in
 		listspaces)
