@@ -25,7 +25,7 @@ function _workspace() {
 			declare -a workspacefin
 			for space in $workspaces
 			do
-				if [[ $space =~ ^\\. ]] && [[ $space != ".last_used" ]]; then 
+				if [[ $space =~ ^\\. ]]; then 
 					workspacefin+=${space#"."}
 				fi
 			done
