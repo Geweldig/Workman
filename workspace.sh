@@ -26,7 +26,7 @@ function workspace() {
 	}
 
 	__workspaceman_list() {
-		ls -A $DIR | grep ^\\. | grep -v ".last_used" | sed s/\.//
+		ls -A $DIR | grep ^\\. | sed s/\.//
 	}
 
 	__workspaceman_help() {
@@ -81,13 +81,13 @@ function workspace() {
 	# Handle all other commands (i.e, switching directory)
 	elif [ ! -z "$1" ] && [ -f $DIR/.$1 ]; then
 		cd $(head -n 1 $DIR/.$1)
-		cp $DIR/.$1 $DIR/.last_used 2> /dev/null
+		cp $DIR/.$1 $DIR/last_used 2> /dev/null
 		return 0
 	elif [ ! -z "$1" ] && [ ! -f $DIR/.$1 ]; then
 		echo "workspace not found: $1"
 		return 1
-	elif [ -f $DIR/.last_used ]; then
-		cd $(head -n 1 $DIR/.last_used)
+	elif [ -f $DIR/last_used ]; then
+		cd $(head -n 1 $DIR/last_used)
 		return 0
 	fi
 	
