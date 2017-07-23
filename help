@@ -1,4 +1,4 @@
-Workspace - A simple workspace manager for your terminal emulator.
+Workman - A simple workspace manager for your terminal emulator.
 
 ADDING
 workspace --add [name]      add a workspace with name [name]
