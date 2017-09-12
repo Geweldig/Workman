@@ -21,8 +21,8 @@ workspace --version         display version
 workspace -v
 
 FINDING
-workspace --which           show workspace directory
-workspace -w
+workspace --which [name]    show workspace directory
+workspace -w [name]
 
 SWITCHING
 workspace [name]            go to workspace [name]
