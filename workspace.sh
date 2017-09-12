@@ -44,6 +44,15 @@ function workspace() {
 		cat "$DIR/version"
 		EXITCODE=0
 	}
+
+	__workspaceman_which() {
+		if [[ -f $DIR/.$1 ]]; then
+			cat $DIR/.$1
+			EXITCODE=0
+		else
+			EXITCODE=1
+		fi
+	}
 	
 	# Handle flags, getops breaks for functions
 	if [[ ! -z "$1" ]] && [[ $1 =~ ^- ]]; then
@@ -82,6 +91,18 @@ function workspace() {
 				__workspaceman_delete $2
 			else
 				echo "A name is required when deleting a workspace."
+				EXITCODE=1
+				return $EXITCODE
+			fi
+			return $EXITCODE
+
+		# Handle -w/--which flag
+		elif [[ "$1" = "-w" ]] || [[ "$1" = "--which" ]]; then
+			# Second parameter is required
+			if [[ ! -z "$2" ]]; then
+				__workspaceman_which $2
+			else
+				echo "A name is required when checking a workspace directory."
 				EXITCODE=1
 				return $EXITCODE
 			fi
