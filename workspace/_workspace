@@ -13,8 +13,10 @@ function _workspace() {
 		- set4 \
 			'--list[list workspaces]' \
 		- set5 \
-			'--help[show help]' \
+			'--which[show workspace directory]:workspace:->listspaces' \
 		- set6 \
+			'--help[show help]' \
+		- set7 \
 			'--version[show version]'
 		
 	case "$state" in
